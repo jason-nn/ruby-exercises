@@ -5,14 +5,23 @@ RSpec.describe 'Nested hash exercises' do
   describe 'find language information exercise' do
     let(:hash) do
       {
-        ruby: { initial_release: 'December 25, 1996', is_beautiful?: true },
-        javascript: { initial_release: 'December 4, 1995', is_beautiful?: false }
+        ruby: {
+          initial_release: 'December 25, 1996',
+          is_beautiful?: true,
+        },
+        javascript: {
+          initial_release: 'December 4, 1995',
+          is_beautiful?: false,
+        },
       }
     end
 
     context 'when the given language name is ruby' do
-      it 'returns the information for ruby' do
-        expected_output = { initial_release: 'December 25, 1996', is_beautiful?: true }
+      xit 'returns the information for ruby' do
+        expected_output = {
+          initial_release: 'December 25, 1996',
+          is_beautiful?: true,
+        }
         expect(find_language_information(hash, :ruby)).to eq(expected_output)
       end
     end
@@ -20,8 +29,13 @@ RSpec.describe 'Nested hash exercises' do
     context 'when the given language name is javascript' do
       # remove the 'x' from the line below to unskip the test
       xit 'returns the information for javascript' do
-        expected_output = { initial_release: 'December 4, 1995', is_beautiful?: false }
-        expect(find_language_information(hash, :javascript)).to eq(expected_output)
+        expected_output = {
+          initial_release: 'December 4, 1995',
+          is_beautiful?: false,
+        }
+        expect(find_language_information(hash, :javascript)).to eq(
+          expected_output,
+        )
       end
     end
   end
@@ -29,33 +43,62 @@ RSpec.describe 'Nested hash exercises' do
   describe 'add information about language exercise' do
     let(:hash) do
       {
-        ruby: { initial_release: 'December 25, 1996' },
-        javascript: { is_beautiful?: false }
+        ruby: {
+          initial_release: 'December 25, 1996',
+        },
+        javascript: {
+          is_beautiful?: false,
+        },
       }
     end
 
     xit 'adds is_beautiful?: true k/v pair to the ruby nested hash' do
       expected_output = {
-        ruby: { is_beautiful?: true, initial_release: 'December 25, 1996' },
-        javascript: { is_beautiful?: false }
+        ruby: {
+          is_beautiful?: true,
+          initial_release: 'December 25, 1996',
+        },
+        javascript: {
+          is_beautiful?: false,
+        },
       }
-      expect(add_information_about_language(hash, :ruby, :is_beautiful?, true)).to eq(expected_output)
+      expect(
+        add_information_about_language(hash, :ruby, :is_beautiful?, true),
+      ).to eq(expected_output)
     end
 
     xit "adds initial_release: 'December 4, 1995', k/v pair to the javascript nested hash" do
       expected_output = {
-        ruby: { initial_release: 'December 25, 1996' },
-        javascript: { is_beautiful?: false, initial_release: 'December 4, 1995' }
+        ruby: {
+          initial_release: 'December 25, 1996',
+        },
+        javascript: {
+          is_beautiful?: false,
+          initial_release: 'December 4, 1995',
+        },
       }
-      expect(add_information_about_language(hash, :javascript, :initial_release, 'December 4, 1995')).to eq(expected_output)
+      expect(
+        add_information_about_language(
+          hash,
+          :javascript,
+          :initial_release,
+          'December 4, 1995',
+        ),
+      ).to eq(expected_output)
     end
   end
 
   describe 'add language exercise' do
     let(:hash) do
       {
-        ruby: { is_beautiful?: true, initial_release: 'December 25, 1996' },
-        javascript: { is_beautiful?: false, initial_release: 'December 4, 1995' }
+        ruby: {
+          is_beautiful?: true,
+          initial_release: 'December 25, 1996',
+        },
+        javascript: {
+          is_beautiful?: false,
+          initial_release: 'December 4, 1995',
+        },
       }
     end
 
@@ -63,68 +106,122 @@ RSpec.describe 'Nested hash exercises' do
       key_to_add = :java
       value_to_add = { is_beautiful?: false, initial_release: 'May 23, 1995' }
       expected_output = {
-        ruby: { is_beautiful?: true, initial_release: 'December 25, 1996' },
-        javascript: { is_beautiful?: false, initial_release: 'December 4, 1995' },
-        java: { is_beautiful?: false, initial_release: 'May 23, 1995' }
+        ruby: {
+          is_beautiful?: true,
+          initial_release: 'December 25, 1996',
+        },
+        javascript: {
+          is_beautiful?: false,
+          initial_release: 'December 4, 1995',
+        },
+        java: {
+          is_beautiful?: false,
+          initial_release: 'May 23, 1995',
+        },
       }
-      expect(add_language(hash, key_to_add, value_to_add)).to eq(expected_output)
+      expect(add_language(hash, key_to_add, value_to_add)).to eq(
+        expected_output,
+      )
     end
 
     xit 'adds a hash about python with the included kv pairs' do
       key_to_add = :python
       value_to_add = { is_beautiful?: false, initial_release: 'Feb 20, 1991' }
       expected_output = {
-        ruby: { is_beautiful?: true, initial_release: 'December 25, 1996' },
-        javascript: { is_beautiful?: false, initial_release: 'December 4, 1995' },
-        python: { is_beautiful?: false, initial_release: 'Feb 20, 1991' }
+        ruby: {
+          is_beautiful?: true,
+          initial_release: 'December 25, 1996',
+        },
+        javascript: {
+          is_beautiful?: false,
+          initial_release: 'December 4, 1995',
+        },
+        python: {
+          is_beautiful?: false,
+          initial_release: 'Feb 20, 1991',
+        },
       }
-      expect(add_language(hash, key_to_add, value_to_add)).to eq(expected_output)
+      expect(add_language(hash, key_to_add, value_to_add)).to eq(
+        expected_output,
+      )
     end
   end
 
   describe 'delete information about language exercise' do
     let(:hash) do
       {
-        ruby: { is_beautiful?: true, initial_release: 'December 25, 1996' },
-        javascript: { is_beautiful?: false, initial_release: 'December 4, 1995' }
+        ruby: {
+          is_beautiful?: true,
+          initial_release: 'December 25, 1996',
+        },
+        javascript: {
+          is_beautiful?: false,
+          initial_release: 'December 4, 1995',
+        },
       }
     end
 
     xit 'removes the is_beautiful? k/v pair from the ruby nested hash' do
       expected_output = {
-        ruby: { initial_release: 'December 25, 1996' },
-        javascript: { is_beautiful?: false, initial_release: 'December 4, 1995' }
+        ruby: {
+          initial_release: 'December 25, 1996',
+        },
+        javascript: {
+          is_beautiful?: false,
+          initial_release: 'December 4, 1995',
+        },
       }
-      expect(delete_information_about_language(hash, :ruby, :is_beautiful?)).to eq(expected_output)
+      expect(
+        delete_information_about_language(hash, :ruby, :is_beautiful?),
+      ).to eq(expected_output)
     end
 
     xit 'removes the initial_release k/v pair from the javascript nested hash' do
       expected_output = {
-        ruby: { is_beautiful?: true, initial_release: 'December 25, 1996' },
-        javascript: { is_beautiful?: false }
+        ruby: {
+          is_beautiful?: true,
+          initial_release: 'December 25, 1996',
+        },
+        javascript: {
+          is_beautiful?: false,
+        },
       }
-      expect(delete_information_about_language(hash, :javascript, :initial_release)).to eq(expected_output)
+      expect(
+        delete_information_about_language(hash, :javascript, :initial_release),
+      ).to eq(expected_output)
     end
   end
 
   describe 'delete language hash' do
     let(:hash) do
       {
-        ruby: { is_beautiful?: true, initial_release: 'December 25, 1996' },
-        javascript: { is_beautiful?: false, initial_release: 'December 4, 1995' }
+        ruby: {
+          is_beautiful?: true,
+          initial_release: 'December 25, 1996',
+        },
+        javascript: {
+          is_beautiful?: false,
+          initial_release: 'December 4, 1995',
+        },
       }
     end
 
     xit 'removes the ruby hash' do
       expected_output = {
-        javascript: { is_beautiful?: false, initial_release: 'December 4, 1995' }
+        javascript: {
+          is_beautiful?: false,
+          initial_release: 'December 4, 1995',
+        },
       }
       expect(delete_language(hash, :ruby)).to eq(expected_output)
     end
 
     xit 'removes the javascript hash' do
       expected_output = {
-        ruby: { is_beautiful?: true, initial_release: 'December 25, 1996' }
+        ruby: {
+          is_beautiful?: true,
+          initial_release: 'December 25, 1996',
+        },
       }
       expect(delete_language(hash, :javascript)).to eq(expected_output)
     end
@@ -134,15 +231,27 @@ RSpec.describe 'Nested hash exercises' do
     context 'when only ruby is beautiful' do
       let(:hash) do
         {
-          ruby: { is_beautiful?: true, initial_release: 'December 25, 1996' },
-          javascript: { is_beautiful?: false, initial_release: 'December 4, 1995' },
-          python: { is_beautiful?: false, initial_release: 'Feb 20, 1991' }
+          ruby: {
+            is_beautiful?: true,
+            initial_release: 'December 25, 1996',
+          },
+          javascript: {
+            is_beautiful?: false,
+            initial_release: 'December 4, 1995',
+          },
+          python: {
+            is_beautiful?: false,
+            initial_release: 'Feb 20, 1991',
+          },
         }
       end
 
       xit 'returns a hash with only ruby' do
         expected_output = {
-          ruby: { is_beautiful?: true, initial_release: 'December 25, 1996' }
+          ruby: {
+            is_beautiful?: true,
+            initial_release: 'December 25, 1996',
+          },
         }
         expect(find_beautiful_languages(hash)).to eq(expected_output)
       end
@@ -151,16 +260,31 @@ RSpec.describe 'Nested hash exercises' do
     context 'when only javascript and python are beautiful (never but lets pretend)' do
       let(:hash) do
         {
-          ruby: { is_beautiful?: false, initial_release: 'December 25, 1996' },
-          javascript: { is_beautiful?: true, initial_release: 'December 4, 1995' },
-          python: { is_beautiful?: true, initial_release: 'Feb 20, 1991' }
+          ruby: {
+            is_beautiful?: false,
+            initial_release: 'December 25, 1996',
+          },
+          javascript: {
+            is_beautiful?: true,
+            initial_release: 'December 4, 1995',
+          },
+          python: {
+            is_beautiful?: true,
+            initial_release: 'Feb 20, 1991',
+          },
         }
       end
 
       xit 'returns the hash with only javascript and python' do
         expected_output = {
-          javascript: { is_beautiful?: true, initial_release: 'December 4, 1995' },
-          python: { is_beautiful?: true, initial_release: 'Feb 20, 1991' }
+          javascript: {
+            is_beautiful?: true,
+            initial_release: 'December 4, 1995',
+          },
+          python: {
+            is_beautiful?: true,
+            initial_release: 'Feb 20, 1991',
+          },
         }
         expect(find_beautiful_languages(hash)).to eq(expected_output)
       end
@@ -170,13 +294,19 @@ RSpec.describe 'Nested hash exercises' do
   describe 'find language facts exercise' do
     let(:hash) do
       {
-        ruby: { facts: ['was made for programmer happiness', 'its code is beautiful'],
-                initial_release: 'December 25, 1996',
-                is_beautiful?: true },
-
-        javascript: { facts: ['you have to use semicolons everywhere', "its real name isn't even javascript"],
-                      initial_release: 'December 4, 1995',
-                      is_beautiful?: false }
+        ruby: {
+          facts: ['was made for programmer happiness', 'its code is beautiful'],
+          initial_release: 'December 25, 1996',
+          is_beautiful?: true,
+        },
+        javascript: {
+          facts: [
+            'you have to use semicolons everywhere',
+            "its real name isn't even javascript",
+          ],
+          initial_release: 'December 4, 1995',
+          is_beautiful?: false,
+        },
       }
     end
 
